@@ -528,6 +528,15 @@ class MentionsInput extends React.Component {
       setSelectionAfterMentionChange: setSelectionAfterMentionChange,
     })
 
+    // 한글 조합 이벤트를 handleSelect에서 받지 못해서 추가한 코드
+    if (ev.target.selectionStart === ev.target.selectionEnd) {
+      this.updateMentionsQueries(newPlainTextValue, ev.target.selectionStart)
+    } else {
+      this.clearSuggestions()
+    }
+    // sync highlighters scroll position
+    this.updateHighlighterScroll()
+
     let mentions = getMentions(newValue, config)
 
     // Propagate change

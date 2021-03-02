@@ -15,6 +15,10 @@ import BottomGuard from './BottomGuard'
 
 const users = [
   {
+    id: '김사장',
+    display: '김사장',
+  },
+  {
     id: 'walter',
     display: 'Walter White',
   },

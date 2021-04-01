@@ -1519,6 +1519,11 @@ function (_React$Component) {
         _this.props.onKeyDown(ev);
 
         return;
+      } // NOTE: 탭 클릭시 다음 입력 항목으로 이동하는 게 자연스럽다고 생각하여 이 기능을 비활성화 함.
+
+
+      if (ev.keyCode === KEY.TAB) {
+        return;
       }
 
       if (Object.values(KEY).indexOf(ev.keyCode) >= 0) {

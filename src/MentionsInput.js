@@ -581,6 +581,11 @@ class MentionsInput extends React.Component {
       return
     }
 
+    // NOTE: 탭 클릭시 다음 입력 항목으로 이동하는 게 자연스럽다고 생각하여 이 기능을 비활성화 함.
+    if(ev.keyCode === KEY.TAB) {
+      return;
+    }
+
     if (Object.values(KEY).indexOf(ev.keyCode) >= 0) {
       ev.preventDefault()
       ev.stopPropagation()
@@ -971,6 +976,7 @@ class MentionsInput extends React.Component {
     if (appendSpaceOnAdd) {
       insert += ' '
     }
+
     const newValue = spliceString(value, start, end, insert)
 
     // Refocus input and set caret position to end of mention

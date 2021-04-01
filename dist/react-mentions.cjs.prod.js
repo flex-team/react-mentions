@@ -918,23 +918,25 @@ var makeTriggerRegex = function(trigger) {
         _this.updateHighlighterScroll(), _this.props.onSelect(ev);
       }
     }), _defineProperty(_assertThisInitialized(_this), "handleKeyDown", function(ev) {
-      if (0 !== countSuggestions(_this.state.suggestions) && _this.suggestionsElement) switch (Object.values(KEY).indexOf(ev.keyCode) >= 0 && (ev.preventDefault(), 
-      ev.stopPropagation()), ev.keyCode) {
-       case KEY.ESC:
-        return void _this.clearSuggestions();
+      if (0 !== countSuggestions(_this.state.suggestions) && _this.suggestionsElement) {
+        if (ev.keyCode !== KEY.TAB) switch (Object.values(KEY).indexOf(ev.keyCode) >= 0 && (ev.preventDefault(), 
+        ev.stopPropagation()), ev.keyCode) {
+         case KEY.ESC:
+          return void _this.clearSuggestions();
 
-       case KEY.DOWN:
-        return void _this.shiftFocus(1);
+         case KEY.DOWN:
+          return void _this.shiftFocus(1);
 
-       case KEY.UP:
-        return void _this.shiftFocus(-1);
+         case KEY.UP:
+          return void _this.shiftFocus(-1);
 
-       case KEY.RETURN:
-       case KEY.TAB:
-        return void _this.selectFocused();
+         case KEY.RETURN:
+         case KEY.TAB:
+          return void _this.selectFocused();
 
-       default:
-        return;
+         default:
+          return;
+        }
       } else _this.props.onKeyDown(ev);
     }), _defineProperty(_assertThisInitialized(_this), "shiftFocus", function(delta) {
       var suggestionsCount = countSuggestions(_this.state.suggestions);
